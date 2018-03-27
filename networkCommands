@@ -1,0 +1,11 @@
+# man docker-network-create
+
+docker network ls
+docker network inspect <bridget/host/none>
+docker network create --subnet 10.1.0.0/24 --gateway 10.1.0.1 mybridge01
+
+docker network create --subnet 10.1.0.0/16 --gateway 10.1.0.1 --ip-range=10.1.4.0/24 --driver=bridge --label=host4network bridge04 
+docker run -it --name nethost1 --net bridge04 centos:latest /bin/bash
+docker run -it --name nethost2 --ip 10.1.4.100 centos:latest /bin/bash
+
+netstat -rn (shows route tables in container)
